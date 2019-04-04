@@ -28,12 +28,7 @@ class TodoApp extends React.Component {
             * Representa a lista das tarefas que será mostrada no ecrã
             * e com a qual o utilizador pode interagir.
             */
-            listaTarefas: 
-            [
-                {description: "Regar as plantas", done: false}, 
-                {description: "Dar de comer ao gato", done: false}, 
-                {description: "Estudar TI2", done: false}
-            ]
+            listaTarefas: ["Regar as plantas", "Dar de comer ao gato", "Estudar TI2"]
         };
     }
     // retoma a interface a ser mostrada ao utilizador
@@ -67,32 +62,6 @@ class TodoApp extends React.Component {
                 },
                 "+"
             ),
-
-            React.createElement(
-                "button",
-                {
-                   type: "button",
-                   onClick: (evt) => this.handleClick(evt)
-                },
-                "Listar Todas"
-            ),
-            React.createElement(
-                "button",
-                {
-                   type: "button",
-                   onClick: (evt) => this.handleClick(evt)
-                },
-                "Listar Concluídas"
-            ),
-            React.createElement(
-                "button",
-                {
-                   type: "button",
-                   onClick: (evt) => this.handleClick(evt)
-                },
-                "Listar Não Concluídas"
-            ),
-
             React.createElement(ListaTodos, {
                 listaTarefas: this.state.listaTarefas,
                 onDelete: (idx) => this.handleDelete(idx),
@@ -100,7 +69,6 @@ class TodoApp extends React.Component {
                 //React.createElement("li", null, "Regar as plantas"),
                 //React.createElement("li", null, "Dar de comer ao gato"),
             })
-
         );
     }
 
@@ -121,7 +89,7 @@ class TodoApp extends React.Component {
 
         let aux = this.state.listaTarefas.slice();
 
-        aux.push({description: texto, done: false});
+        aux.push(texto);
 
         //this.state.listaTarefas = aux; //nao funciona porque p todos os efeitos o array é o mesmo
         this.setState({
@@ -149,7 +117,7 @@ class TodoApp extends React.Component {
     handleItemEdited(index, novoTexto) {
         let aux = this.state.listaTarefas.slice();
 
-        aux[index].description = novoTexto;
+        aux[index] = novoTexto;
 
         this.setState({ listaTarefas: aux });
     }
